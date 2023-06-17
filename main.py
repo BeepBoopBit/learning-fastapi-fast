@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.params import Body
 
 app = FastAPI()
 
@@ -12,5 +13,6 @@ async def page01():
     return{"Page": "01"}
 
 @app.post("/createpost")
-async def create_post():
+async def create_post(payload: dict = Body(...)):
+    print(payload)
     return{"Create": "Post"}

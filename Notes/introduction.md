@@ -66,4 +66,16 @@ async def do_post(){
     return{"Message":"The post has been done"}
 }
 ```
+### Accepting data
+
+Of course, when we want to do post, we want to also accept data from it. In order for us to do it, we need to put some parameters
+
+```py
+from fastapi.params import Body
+@app.post("/newPost")
+async def do_data_psot(payload: dic = Body(...)):
+    print(payload)
+    return {"STATUS CODE: SUCCESSFUL"}
+```
+
 
