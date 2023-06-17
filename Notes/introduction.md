@@ -78,4 +78,20 @@ async def do_data_psot(payload: dic = Body(...)):
     return {"STATUS CODE: SUCCESSFUL"}
 ```
 
+### Accepting data with a model
 
+In this case, we want to make use of pydantic, so better install it using `pip install pydantic`. If you already installed it, we just need to create a class that inheritcs the `BaseModel` from the module, and pass it as a parameter
+
+```py
+from pydantic import BaseModel
+
+class Post:
+    title: str
+    content: str
+
+@app.post("/newPost2")
+async def do_new_post(payload: Post):
+    print(payload)
+    return("CONFIRMATION":"YES")
+
+```
