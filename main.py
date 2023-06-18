@@ -1,3 +1,4 @@
+from typing import Optional
 from fastapi import FastAPI
 from fastapi.params import Body
 from pydantic import BaseModel
@@ -27,3 +28,13 @@ class Post(BaseModel):
 async def create_post2(payload: Post):
     print(payload)
     return{"Create": "Post2"}
+class BetterPost(BaseModel):
+    title:str
+    content:str
+    published:bool = False
+    rating: Optional[int] = None
+    
+@app.post("/createpost3")
+async def create_post3(payload: BetterPost):
+    print(payload)
+    return{"Create": "Post3"}

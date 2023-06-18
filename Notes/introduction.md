@@ -95,3 +95,20 @@ async def do_new_post(payload: Post):
     return("CONFIRMATION":"YES")
 
 ```
+
+### Accepting data with better model
+
+We can also create optional and default values. However, in order to do the opinional fields, we need to import `Optional` from `typing`:
+
+```py
+class BetterPost(BaseModel):
+    title:str
+    content:str
+    published:bool = False
+    rating: Optional[int] = None
+    
+@app.post("/createpost3")
+async def create_post3(payload: BetterPost):
+    print(payload)
+    return{"Create": "Post3"}
+```
